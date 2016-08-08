@@ -15,6 +15,5 @@ class Equation:
         val = 0
         while(i<=n):
             val = val + self.coefficients[n-i]*(x**i)
-            print(val, self.coefficients[n-i], (x**i))
             i = i+1
         return val
