@@ -4,4 +4,5 @@ from FalsePosition import *
 from ModifiedFalsePosition import *
 from NewtonRaphson import *
 a=Equation()
-b = NewtonRaphson(a)
+b = Bisection(a)
+# b = NewtonRaphson(a)

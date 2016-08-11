@@ -19,7 +19,7 @@ class Bisection:
         while i<len(self.er):
             print(round(self.xl[i],4),'\t',round(self.fxl[i],4),'\t',round(self.xu[i],4),'\t',round(self.fxu[i],4),'\t',round(self.xr[i],4),'\t',round(self.fxr[i],4),'\t',round(self.er[i],4),'\n')
             i=i+1
-    
+
     def readData(self):
         while 1:
             try:
