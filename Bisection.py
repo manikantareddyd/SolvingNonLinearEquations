@@ -3,8 +3,11 @@ class Bisection:
         self.Data = Data
         print("You have chosen Bisection method of finding roots")
         self.xu = []
+        self.fxu = []
         self.xl = []
+        self.fxl = []
         self.xr = []
+        self.fxr = []
         self.er = []
         self.readData()
         self.root = self.compute(self.bounds[0],self.bounds[1],self.estError,self.maxIter)
@@ -14,8 +17,9 @@ class Bisection:
     def printTable(self):
         i=0
         while i<len(self.er):
-            print(round(self.xl[i],4),'\t',round(self.xu[i],4),'\t',round(self.xr[i],4),'\t',round(self.er[i],4),'\n')
+            print(round(self.xl[i],4),'\t',round(self.fxl[i],4),'\t',round(self.xu[i],4),'\t',round(self.fxu[i],4),'\t',round(self.xr[i],4),'\t',round(self.fxr[i],4),'\t',round(self.er[i],4),'\n')
             i=i+1
+    
     def readData(self):
         while 1:
             try:
@@ -45,6 +49,9 @@ class Bisection:
         self.xu.append(b)
         self.xl.append(a)
         self.xr.append(c)
+        self.fxu.append(self.Data.f(b))
+        self.fxl.append(self.Data.f(a))
+        self.fxr.append(self.Data.f(c))
         self.er.append(0)
         while i < maxIter:
             oldc = c
@@ -58,6 +65,9 @@ class Bisection:
             self.xu.append(b)
             self.xl.append(a)
             self.xr.append(c)
+            self.fxu.append(self.Data.f(b))
+            self.fxl.append(self.Data.f(a))
+            self.fxr.append(self.Data.f(c))
             try:
                 self.er.append(abs(100*(c-oldc)/c))
                 if abs(100*(c-oldc)/c) < estError:
