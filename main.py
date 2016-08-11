@@ -1,5 +1,5 @@
 from Data import *
 from Bisection import *
-
+from FalsePosition import *
 a=Equation()
-b = Bisection(a)
+b = FalsePosition(a)
