@@ -1,5 +1,7 @@
 from Data import *
 from Bisection import *
 from FalsePosition import *
+from ModifiedFalsePosition import *
+
 a=Equation()
-b = FalsePosition(a)
+b = ModifiedFalsePosition(a)
