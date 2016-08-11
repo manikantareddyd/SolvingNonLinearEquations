@@ -1,12 +1,21 @@
 class Bisection:
     def __init__(self,Data):
         self.Data = Data
-        self.relApproxError = []
         print("You have chosen Bisection method of finding roots")
-
+        self.xu = []
+        self.xl = []
+        self.xr = []
+        self.er = []
         self.readData()
         self.root = self.compute(self.bounds[0],self.bounds[1],self.estError,self.maxIter)
+        self.printTable()
+        print(self.root)
 
+    def printTable(self):
+        i=0
+        while i<len(self.er):
+            print(round(self.xl[i],4),'\t',round(self.xu[i],4),'\t',round(self.xr[i],4),'\t',round(self.er[i],4),'\n')
+            i=i+1
     def readData(self):
         while 1:
             try:
@@ -33,7 +42,11 @@ class Bisection:
     def compute(self,a,b,estError, maxIter):
         c = (a+b)/2.0
         i = 0
-        while abs((b-a)/2.0) > estError and i < maxIter:
+        self.xu.append(b)
+        self.xl.append(a)
+        self.xr.append(c)
+        self.er.append(0)
+        while i < maxIter:
             oldc = c
             if self.Data.f(c) == 0:
                 return c
@@ -42,7 +55,14 @@ class Bisection:
             else:
                 a=c
             c = (a+b)/2.0
+            self.xu.append(b)
+            self.xl.append(a)
+            self.xr.append(c)
+            try:
+                self.er.append(abs(100*(c-oldc)/c))
+                if abs(100*(c-oldc)/c) < estError:
+                    break
+            except:
+                self.er.append(1000)
             i = i + 1
-            self.relApproxError.append(c)
-            # print(i,c, abs((c - oldc)*100.0/c) , a,b)
         return c
