@@ -17,3 +17,12 @@ class Equation:
             val = val + self.coefficients[n-i]*(x**i)
             i = i+1
         return val
+
+    def df(self,x):
+        n = len(self.coefficients) - 1
+        i = 0
+        val = 0
+        while i<=n:
+            val = val + self.coefficients[i]*(n-i)*(x**(n-i-1))
+            i = i+1
+        return val
