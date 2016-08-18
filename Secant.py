@@ -38,7 +38,9 @@ class Secant:
             try:
                 print("Please enter the maximum Estimation error:")
                 self.estError = list(map(float, input().split(',')))[0]
-                # self.estError = 0.05
+                if(self.estError < 0):
+                    print("Wait! error has to be positive")
+                    continue
                 break
             except:
                 print("\nOops!",sys.exc_info()[0],"occured. Try again!")
@@ -46,6 +48,9 @@ class Secant:
             try:
                 print("Please enter the x_(-1) and x_(0)")
                 self.xs = list(map(float, input().split(',')))
+                if(len(self.xs) != 2):
+                    print(self.xs)
+                    continue
                 # self.xs = [0.1,1.0]
                 break
             except:
