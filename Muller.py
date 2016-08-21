@@ -10,14 +10,15 @@ class Muller:
         print("You have chosen the Muller method")
         self.readData()
         self.compute()
-        self.printTable()
+        # self.printTable()
+        print("A Root ",self.x[-1])
         self.makePlot()
-    
+
     def printTable(self):
         i = 0
-        # for i in range(0,len(self.er)):
-        #     print(self.x[i+3],self.er[i])
-        print("A Root ",self.x[-1])
+        for i in range(0,len(self.er)):
+            print(self.x[i+3],self.er[i])
+        
 
     def makePlot(self):
         x = Symbol('x')

@@ -17,8 +17,8 @@ class FalsePosition:
         self.er = []
         self.readData()
         self.root = self.compute(self.bounds[0],self.bounds[1],self.estError,self.maxIter)
-        self.printTable()
-        print(self.root)
+        # self.printTable()
+        print("A Root ",self.root)
         self.makePlot()
 
     def makePlot(self):

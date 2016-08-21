@@ -14,8 +14,8 @@ class Secant:
         self.er = []
         self.readData()
         self.root = self.compute(self.xo,self.estError,self.maxIter)
-        self.printTable()
-        print(self.root)
+        # self.printTable()
+        print("A Root ",self.root)
         self.makePlot()
 
     def makePlot(self):

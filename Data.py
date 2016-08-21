@@ -29,7 +29,7 @@ class Equation:
     def df(self,voo):
         x = Symbol('x')
         y = sympify(self.equation)
-        yprime = y.diff(x)
-        f = lambdify(x, yprime, 'numpy')
-        val = f(voo*1.0)*1.0
+        yprime = diff(y,x)
+        # f = lambdify(x, yprime, 'numpy')
+        val = yprime.subs(x,voo*1.0)*1.0
         return val
