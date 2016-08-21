@@ -1,16 +1,12 @@
 import math
 import cmath
 import sys
-from sympy.plotting import plot
-from sympy import *
 import matplotlib.pyplot as plt
 class BairStow:
     def __init__(self):
-        self.Threshold = 0.05
-        self.maxIter = 20
         self.getData()
         roots = self.compute(self.polynomial)
-        print(roots)
+        print("Roots ",roots)
     def getData(self):
         print("Enter polynomial as coefficients only")
         self.polynomial =  list(map(complex, input().split(',')))
@@ -18,6 +14,10 @@ class BairStow:
         self.r = list(map(complex, input().split(',')))[0]
         print("Enter s")
         self.s = list(map(complex, input().split(',')))[0]
+        print("Enter Threshold")
+        self.Threshold = list(map(complex, input().split(',')))[0]
+        print("Enter Max number of Iterations")
+        self.maxIter = list(map(int, input().split(',')))[0]
     
     def compute(self,polynomial):
         i=0
@@ -89,5 +89,3 @@ class BairStow:
             
             i = i + 1
         return roots
-
-a = BairStow()

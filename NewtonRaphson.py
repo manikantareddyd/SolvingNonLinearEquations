@@ -22,7 +22,7 @@ class NewtonRaphson:
         x = Symbol('x')
         f = self.Data.equation
         p1 = plot(f)
-        plt.plot(self.er)
+        plt.plot(self.er[1:])
         plt.show()
 
     def printTable(self):
