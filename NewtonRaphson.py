@@ -1,3 +1,6 @@
+from sympy.plotting import plot
+from sympy import *
+import matplotlib.pyplot as plt
 class NewtonRaphson:
     def __init__(self,Data):
         self.Data = Data
@@ -10,6 +13,14 @@ class NewtonRaphson:
         self.root = self.compute(self.xo,self.estError,self.maxIter)
         self.printTable()
         print(self.root)
+        self.makePlot()
+
+    def makePlot(self):
+        x = Symbol('x')
+        f = self.Data.equation
+        p1 = plot(f)
+        plt.plot(self.er)
+        plt.show()
 
     def printTable(self):
         i=0

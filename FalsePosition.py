@@ -1,3 +1,6 @@
+from sympy.plotting import plot
+from sympy import *
+import matplotlib.pyplot as plt
 class FalsePosition:
     def __init__(self,Data):
         self.Data = Data
@@ -13,6 +16,14 @@ class FalsePosition:
         self.root = self.compute(self.bounds[0],self.bounds[1],self.estError,self.maxIter)
         self.printTable()
         print(self.root)
+        self.makePlot()
+
+    def makePlot(self):
+        x = Symbol('x')
+        f = self.Data.equation
+        p1 = plot(f)
+        plt.plot(self.er)
+        plt.show()
 
     def printTable(self):
         i=0
@@ -24,7 +35,7 @@ class FalsePosition:
         while 1:
             try:
                 print("Please enter lower and upper bounds seperated by a comma.\nIf x_l=0.1 and x_u=-9, then you should enter\n0.1,-9")
-                self.bounds = float(input())
+                self.bounds = list(map(float, input().split(',')))
                 break
             except:
                 print("\nOops!",sys.exc_info()[0],"occured. Try again!")
