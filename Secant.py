@@ -1,7 +1,7 @@
 class Secant:
     def __init__(self,Data):
         self.Data = Data
-        print("You have chosen Newton Raphson method of finding roots")
+        print("You have chosen Secant method of finding roots")
         self.xr = []
         self.fxr = []
         self.dfxr = []

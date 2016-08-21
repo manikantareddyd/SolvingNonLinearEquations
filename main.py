@@ -4,7 +4,13 @@ from FalsePosition import *
 from ModifiedFalsePosition import *
 from NewtonRaphson import *
 from Secant import *
+from Muller import *
+# from BairStow import *
+import sys
+import math
 a=Equation()
 # b = Bisection(a)
 # b = NewtonRaphson(a)
-b = Secant(a)
+# b = Secant(a)
+# b = Muller(a)
+# b = BairStow(a)
