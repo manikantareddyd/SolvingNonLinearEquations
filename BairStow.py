@@ -1,3 +1,9 @@
+import math
+import cmath
+import sys
+from sympy.plotting import plot
+from sympy import *
+import matplotlib.pyplot as plt
 class BairStow:
     def __init__(self):
         self.Threshold = 0.05
@@ -84,5 +90,4 @@ class BairStow:
             i = i + 1
         return roots
 
-import cmath
 a = BairStow()

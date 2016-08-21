@@ -6,8 +6,6 @@ from NewtonRaphson import *
 from Secant import *
 from Muller import *
 # from BairStow import *
-import sys
-import math
 a=Equation()
 # b = Bisection(a)
 # b = NewtonRaphson(a)
