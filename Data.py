@@ -10,8 +10,8 @@ class Equation:
             try:
                 print("Please enter equation using standard system notation.\nNote:The Independent Variable should be x")
                 # self.equation = input()
-                self.equation = "exp(-x)-x"
-                # self.equation = "(600*(x^4))-(500*(x^3))+(200*(x^2))-(20*x)-1"
+                # self.equation = "exp(-x)-x"
+                self.equation = "(600*(x^4))-(500*(x^3))+(200*(x^2))-(20*x)-1"
                 
                 if(self.equation == "exit"):
                     break

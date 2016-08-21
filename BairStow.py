@@ -21,7 +21,7 @@ class BairStow:
         c = [0 for x in polynomial]
         polynomial.reverse()
         a = polynomial
-        print(len(polynomial))
+        # print(len(polynomial))
         if(len(polynomial)==2):
             roots = [-a[0]/a[1]]
             return roots
@@ -36,7 +36,6 @@ class BairStow:
             pass
         
         while 1:
-            
             b[-1]=a[-1]
             b[-2]=a[-2]+r*b[-1]
             t=len(a)-3
@@ -44,8 +43,8 @@ class BairStow:
                 b[t]=a[t]+ r*b[t+1]+s*b[t+2]
                 t = t-1
                 if(t<0): break
-            print("a",a)
-            print("b",b)
+            # print("a",a)
+            # print("b",b)
             # print("b",b)
             c[-1]=b[-1]
             c[-2]=b[-1]+r*c[-1]
@@ -66,16 +65,17 @@ class BairStow:
                 delr = complex((-(b[0]*c[3]-b[1]*c[2]))/(c[2]*c[2]*1.0-c[1]*1.0*c[3]))
             except:
                 delr = complex(0)
+
             r = r - delr 
             s = s - dels
-            print(r,s,delr,dels) 
+            # print(r,s,delr,dels) 
             if(abs(100*delr)<abs(r*self.Threshold) and abs(100*dels)<abs(s*self.Threshold)) or i>self.maxIter:
                 x1 = complex(r*0.5 + cmath.sqrt((r*r)+(4*s))*0.5)
                 x2 = complex(r*0.5 - cmath.sqrt((r*r)+(4*s))*0.5)
-                print("b",b)
+                # print("b",b)
                 new_poly = b[2:]
                 new_poly.reverse()
-                print("New Poly",new_poly)
+                # print("New Poly",new_poly)
                 roots = [x1,x2] + self.compute(new_poly)
                 self.r = r
                 self.s = s

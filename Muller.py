@@ -11,16 +11,15 @@ class Muller:
         self.printTable()
     def printTable(self):
         i = 0
-        while 1:
-            if(i>self.maxIter): break
+        for i in range(0,len(self.er)):
             print(self.x[i+3],self.er[i])
-            i = i+1
+            
     def readData(self):
         while 1:
             try:
                 print("Please Enter x0,x1,x2 as 1,2,3")
                 # self.x = list(map(float, input().split(',')))
-                self.x = [complex(0.0,0.0),complex(0.1,0.0),complex(0.3,0.0)]
+                self.x = [complex(0.0),complex(0.5),complex(1.0)]
                 break
             except:
                 print("\nOops!",sys.exc_info()[0],"Occured. Try again!")
@@ -41,12 +40,7 @@ class Muller:
             except:
                 print("\nOops!",sys.exc_info()[0],"occured. Try again!")
 
-    def dividedDiff1(self,a,b):
-        return complex((self.Data.f(a)-self.Data.f(b))/(a-b))
-
-    def dividedDiff2(self,a,b,c):
-        return complex((self.dividedDiff1(a,b)-self.dividedDiff1(b,c))/(a-c))
-
+    
     def compute(self):
         self.f = []
         self.abc = []
@@ -57,46 +51,45 @@ class Muller:
             x0 = complex(self.x[i+0])
             x1 = complex(self.x[i+1])
             x2 = complex(self.x[i+2])
-            self.f.append(complex(self.Data.f(x0)))
-            self.f.append(complex(self.Data.f(x1)))
-            self.f.append(complex(self.Data.f(x2)))
+            h0 = complex(x1 - x0)
+            h1 = complex(x2-x1)
+            del0 = complex((self.Data.f(x1)-self.Data.f(x0))/h0)
+            del1 = complex((self.Data.f(x2)-self.Data.f(x1))/h1)
+            
             #a = f[x0,x1,x2]
-            a = complex(self.dividedDiff2(x2,x1,x0))
+            a = complex((del1-del0)/(h1+h0))
             self.abc.append(a)
             #b = a(x2-x1)+f[x2,x1]
-            b = complex(self.dividedDiff1(x2,x1)+self.dividedDiff1(x2,x0)-self.dividedDiff1(x1,x0))
+            # b = complex(self.dividedDiff1(x2,x1)+self.dividedDiff1(x2,x0)-self.dividedDiff1(x1,x0))
+            b = complex((a*h1)+del1)
             self.abc.append(b)
             #c = f(x2)
-            c = complex(self.f[i+2])
+            c = complex(self.Data.f(x2))
             self.abc.append(c)
             
-            print("abc ",a,b,c)
+            # print("abc ",a,b,c)
             delta = (b*b) - (4*a*c)
             delta = complex(cmath.sqrt(delta))
             
             denom1 = complex(b+delta)
             denom2 = complex(b-delta)
+            delx1 = complex((-2*c)/denom1)
+            delx2 = complex((-2*c)/denom2)
 
-            if(denom1.real > denom2.real):
-                print("+")
-                x3 = x2-(2*c/denom1)
+            if(abs(delx1)>abs(delx2)):
+                x3 = complex(x2 + delx2)
             else:
-                print("-")
-                x3 = x2-(2*c/denom2)
+                x3 = complex(x2 + delx1)
+
             print("x3",x3)
-            # else:
-                # x3 = x2 - (2*c/(b+delta))
-            try: x3 = simplify(x3.expand(complex=True))
-            except: x3 = complex(x3)
             
             self.x.append(x3)
             try:
-                err = 100*(1-x2/x3)
-                try: err = simplify(abs(err).expand(complex=True))
-                except: err = abs(err)
+                err = complex(100*(1-x2/x3))
+                err = abs(err)
                 print("Error ", err)
                 self.er.append(err)
-                # if(err<0.05): break
+                if(err<0.05): break
             except:
                 print("Error ",1000,sys.exc_info())
                 self.er.append(1000)
